@@ -1,0 +1,21 @@
+spring:
+  thymeleaf:
+    prefix: classpath:/static/
+    suffix: .html
+  datasource:
+    url: jdbc:mysql://localhost:3306/bookshop?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 12abCD##
+    dirver-class-name: com.mysql.cj.jdbc.Driver
+#  mvc:
+#    hiddenmethod:
+#      filter:
+#        enabled: true
+#  server:
+#    port: 8080
+#    servlet:
+#      context-path: /giddy
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

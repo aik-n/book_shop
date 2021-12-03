@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:include="common.html :: source"></th:block>
+    <script>
+        function update1(){
+            var oldPwd=$(".oldPwd").val();
+            var newPwd=$(".newPwd").val();
+            $.ajax({
+                url:"/user/updatePwd/"+oldPwd+"/"+newPwd,
+                type:"POST",
+                dataType:"text",
+
+            });
+        }
+    </script>
+</head>
+<body>
+
+<th:block th:include="common.html :: header"></th:block>
+
+<div class="i_bg bg_color">
+    <div class="m_content">
+
+        <div class="m_left">
+            <div class="left_n">管理中心</div>
+            <div class="left_m">
+                <div class="left_m_t t_bg1">订单中心</div>
+                <ul>
+                    <li><a href="/order/userOrder" >我的订单</a></li>
+                </ul>
+            </div>
+            <div class="left_m">
+                <div class="left_m_t t_bg2">会员中心</div>
+                <ul>
+                    <li><a href="/user/userInfo" >用户信息</a></li>
+                    <li><a href="/user/userAddress" >地址管理</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="m_right" id="content">
+            <div class="m_des">
+                <table border="0" style="width:870px; line-height:22px;" cellspacing="0" cellpadding="0">
+                    <tr valign="top">
+                        <td width="115"><img th:src="'/images/'+${user.userImg}" width="90" height="90" /></td>
+                        <td>
+                            <div class="m_user"><span th:text="${user.userName}">向惟宇</span></div><br />
+                            <p>
+                                性别:
+                                <span th:text="${user.sex}">男</span>
+                                <br /><br />
+                                邮箱:
+                                <span th:text="${user.mail}">xwy19971118@163.com</span><br /><br />
+                                电话:
+                                <span th:text="${user.phone}">18930973561</span><br /><br />
+                                旧密码：<input type="text" class="oldPwd"><br /><br />
+                                新密码：<input type="text" class="newPwd"><br /><br />
+                                新密码：<input type="button" class="btn1" value="修改密码" onclick="update1()"><br /><br />
+<!--                                <a href="/user/updatePwd">修改密码</a>-->
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<th:block th:include="common.html :: footer"></th:block>
+<th:block th:include="common.html :: permit"></th:block>
+
+</body>
+</html>

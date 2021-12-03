@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:include="common.html :: source"></th:block>
+</head>
+<body>
+
+<th:block th:include="common.html :: header"></th:block>
+<th:block th:include="common.html :: category"></th:block>
+
+<div class="i_bg">
+    <div class="content mar_20">
+        <div id="favoriteList"></div>
+        <div class="l_list">
+            <div class="list_c">
+                <ul class="cate_list">
+                    <li th:each="book:${searchBook}">
+                        <div class="name">
+                            <a th:href="'/bookDetail/findById/'+${book.id}" th:text="${book.name}">狼图腾</a>
+                        </div>
+                        <div class="price">
+                            <font>￥<span th:text="${book.price}">60</span></font> &nbsp;
+                        </div>
+                        <div class="img">
+                            <a th:href="'/bookDetail/findById/'+${book.id}">
+                                <img th:src="'/images/'+${book.fileName}" width="185"
+                                     height="155" />
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<th:block th:include="common.html :: footer"></th:block>
+<th:block th:include="common.html :: permit"></th:block>
+
+</body>
+</html>
